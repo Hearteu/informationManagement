@@ -21,3 +21,4 @@ private void ShowStudRec(){
             System.out.println(ex);
         }
     }
+// ilagay mo sya sa save and formwindowopened
