@@ -3,7 +3,7 @@ private void ShowStudRec(){
         tblmodel.setRowCount(0);
         MyDBConn a = new MyDBConn();
         try {
-            String query = "";
+            String query = "select * from students";
             a.rs = a.st.executeQuery(query);
             while (a.rs.next())
                 {
