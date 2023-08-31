@@ -18,12 +18,12 @@ int[] selectRow = table_students.getSelectedRows();
 // teachers
 int[] selectRow = table_teachers.getSelectedRows();
        String teacherID,teacherName,Department,teacherAdd,teacherContact,teacherStatus;
-       teacherID=(String) table_students.getValueAt(selectRow[0],0);
-       teacherName=(String) table_students.getValueAt(selectRow[0],1);
-       Department=(String) table_students.getValueAt(selectRow[0],2);
-       teacherAdd=(String) table_students.getValueAt(selectRow[0],3);
-       teacherContact=(String) table_students.getValueAt(selectRow[0],4);
-       teacherStatus=(String) table_students.getValueAt(selectRow[0],5);
+       teacherID=(String) table_teachers.getValueAt(selectRow[0],0);
+       teacherName=(String) table_teachers.getValueAt(selectRow[0],1);
+       Department=(String) table_teachers.getValueAt(selectRow[0],2);
+       teacherAdd=(String) table_teachers.getValueAt(selectRow[0],3);
+       teacherContact=(String) table_teachers.getValueAt(selectRow[0],4);
+       teacherStatus=(String) table_teachers.getValueAt(selectRow[0],5);
 
        txt_teacherID.setText(teacherID);
        txt_teacherName.setText(teacherName);
