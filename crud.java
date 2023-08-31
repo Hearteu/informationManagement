@@ -37,7 +37,7 @@ String deleteDB = "delete from teachers where teacherID=" + txt_teacherID.getTex
         }catch(Exception ex){
             System.out.print("Unable to Delete!!");
         }
-        ShowStudRec();
+        ShowTeachRec();
 
 System.out.print("Update");
         String updateDB = "update teachers set teacherName='"+txt_teacherName.getText()+"',Department='"+txt_department.getText()+"',teacherAdd='"+txt_teacherAdd.getText()+"',teacherContact='"+txt_teacherContact.getText()+"',teacherStatus='"+txt_teacherStatus.getText()+"' where studid=" + txt_teacherID.getText();
@@ -47,7 +47,7 @@ System.out.print("Update");
         }catch(Exception ex){
             System.out.print("Unable to Update!!" + ex);
         }
-        ShowStudRec();
+        ShowTeachRec();
 
    System.out.print("Save");
         String saveDB = "insert into teachers values("+txt_teacherID.getText()+",'"+txt_teacherName.getText()+"','"+txt_department.getText()+"','"+txt_teacherAdd.getText()+"','"+txt_teacherContact.getText()+"','"+txt_teacherStatus.getText()+"')";
@@ -57,4 +57,4 @@ System.out.print("Update");
         }catch(Exception ex){
             System.out.print("Unable to Save!!");
         }
-        ShowStudRec();
+        ShowTeachRec();
