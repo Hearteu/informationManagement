@@ -31,3 +31,18 @@ int[] selectRow = table_teachers.getSelectedRows();
        txt_teacherAdd.setText(teacherAdd);
        txt_teacherContact.setText(teacherContact);
        txt_teacherStatus.setText(teacherStatus);
+
+// subjects
+int[] selectRow = table_subjects.getSelectedRows();
+       String studid,studname,studadd,studcourse,studgender,studyear;
+       studid=(String) table_subjects.getValueAt(selectRow[0],0);
+       studname=(String) table_subjects.getValueAt(selectRow[0],1);
+       studadd=(String) table_subjects.getValueAt(selectRow[0],2);
+       studcourse=(String) table_subjects.getValueAt(selectRow[0],3);
+       studgender=(String) table_subjects.getValueAt(selectRow[0],4);
+
+       txt_subjID.setText(studid);
+       txt_subjCode.setText(studname);
+       txt_subjDesc.setText(studadd);
+       txt_subjUnits.setText(studcourse);
+       txt_subjSched.setText(studgender);
