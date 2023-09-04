@@ -3,3 +3,10 @@ create table enroll(eid int, studid int, subjid int);
 //run
 use database; //need to specify which database everytime you create a table
 create table subjects(subjid int, stujcode text, subjdesc text, subjunits int, subjsched text);
+//run
+use database;
+insert into subjects values(11,'cs111','Intro to Prog1',5,'TTH');
+insert into subjects values(12,'cs211','Intro to Prog2',5,'SAT');
+insert into subjects values(13,'cs311','Intro to Prog3',5,'F');
+insert into subjects values(14,'cs411','Intro to Prog4',5,'MW');
+//run
