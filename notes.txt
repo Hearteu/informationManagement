@@ -1,2 +1,5 @@
 use database;
 create table enroll(eid int, studid int, subjid int);
+//run
+use database; //need to specify which database everytime you create a table
+create table subjects(subjid int, stujcode text, subjdesc text, subjunits int, subjsched text);
