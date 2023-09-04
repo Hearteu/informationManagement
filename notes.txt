@@ -34,4 +34,7 @@ select * from students where studid in(select studid from enroll); //important /
 use database;
 select * from subjects where subjid in(select ssubjid from enroll); //important / intersection;
 //run
+use database;
+select * from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid;
+//run
 
