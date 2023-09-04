@@ -43,4 +43,6 @@ select * from students,subjects,enroll where students.studid=enroll.studid = and
 use database;
 select students.studid,(students.)studname,subjcode,subjdesc from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid and students.studid=5;
 //run
-
+use database;
+select * from (select * from subjects) as y where subjid>11;
+//run
