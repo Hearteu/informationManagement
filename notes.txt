@@ -37,4 +37,10 @@ select * from subjects where subjid in(select ssubjid from enroll); //important 
 use database;
 select * from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid;
 //run
+use database;
+select * from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid and students.studid=1; /for specific stud
+//run
+use database;
+select students.studid,(students.)studname,subjcode,subjdesc from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid and students.studid=5;
+//run
 
