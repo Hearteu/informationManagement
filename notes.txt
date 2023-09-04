@@ -44,5 +44,20 @@ use database;
 select students.studid,(students.)studname,subjcode,subjdesc from students,subjects,enroll where students.studid=enroll.studid = and enroll.subjid = subjects.subjid and students.studid=5;
 //run
 use database;
-select * from (select * from subjects) as y where subjid>11;
+select y.subjcode(*) from (select * from subjects) as y where subjid>11;
+//run
+use database;
+select * from (select subjcode,subjid from subjects) as y where subjid>11;
+//run
+use database;
+select subjcode,subjid from (select * from subjects) as y where subjid>11; //same sa taas
+//run
+use database;
+select (select studid from students where studname='ba') from students; //return ambot hatdog
+//run
+use database;
+select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid; //get total of all
+//run
+use database;
+select studname,studid as x, (select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid and students.studid=x) as totalUnits from students; //get total of a particular student
 //run
