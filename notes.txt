@@ -1,5 +1,5 @@
 use database;
-create table enroll(eid int, studid int, subjid int);
+create table enroll(enrollmentID int, studid int, subjid int); // will hold all the ids/ which subj the sudent enrolled
 //run
 use database; //need to specify which database everytime you create a table
 create table subjects(subjid int, stujcode text, subjdesc text, subjunits int, subjsched text);
@@ -17,3 +17,16 @@ insert into students values(13,'cs111','ccc','5','TTH','aa');
 insert into students values(14,'cs111','Intro to Prog','5','TTH','aa');
 insert into students values(15,'cs111','Intro to Prog','5','TTH','aa');
 //run
+use database;
+insert into enroll values(1,1,12);
+insert into enroll values(2,1,13);
+insert into enroll values(3,1,14);
+insert into enroll values(4,3,11);
+insert into enroll values(5,3,12);
+insert into enroll values(6,3,13);
+insert into enroll values(7,5,11);
+insert into enroll values(8,5,10);
+insert into enroll values(9,5,12);
+//run
+
+
