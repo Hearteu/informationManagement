@@ -1,0 +1,2 @@
+use database;
+create table enroll(eid int, studid int, subjid int);
