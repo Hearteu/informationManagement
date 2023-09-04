@@ -59,5 +59,5 @@ use database;
 select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid; //get total of all
 //run
 use database;
-select studname,studid as x, (select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid and students.studid=x) as totalUnits from students; //get total of a particular student
+select studname,studid as x, (select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid and students.studid=x) (as totalUnits(*variable name of the column*)) from students; //get total of a particular student
 //run
