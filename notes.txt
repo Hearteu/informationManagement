@@ -28,5 +28,7 @@ insert into enroll values(7,5,11);
 insert into enroll values(8,5,10);
 insert into enroll values(9,5,12);
 //run
-
+use database;
+select * from students where studid in(select studid from enroll); //important / intersection
+//run
 
