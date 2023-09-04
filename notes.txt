@@ -10,3 +10,10 @@ insert into subjects values(12,'cs211','Intro to Prog2',5,'SAT');
 insert into subjects values(13,'cs311','Intro to Prog3',5,'F');
 insert into subjects values(14,'cs411','Intro to Prog4',5,'MW');
 //run
+use database;
+insert into students values(11,'cs111','aaa','5','TTH','aa');
+insert into students values(12,'cs111','bbb','5','TTH','aa');
+insert into students values(13,'cs111','ccc','5','TTH','aa');
+insert into students values(14,'cs111','Intro to Prog','5','TTH','aa');
+insert into students values(15,'cs111','Intro to Prog','5','TTH','aa');
+//run
