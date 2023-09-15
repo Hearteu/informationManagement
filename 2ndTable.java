@@ -23,12 +23,13 @@ private void ShowEnrolledSubjRec(){
     }
 
 // subjects
+public String subjID;
 private void ShowStudRec(){
         DefaultTableModel tblmodel = (DefaultTableModel) table_subjStud.getModel();
         tblmodel.setRowCount(0);
         MyDBConn a = new MyDBConn();
         try {
-            String query = "select * from students where studID in(select studID from enroll where subjID ="+stat.subjID+")"; //inlucde total units
+            String query = "select * from students where studID in(select studID from enroll where subjID ="+subjID+")"; //inlucde total units
             a.rs = a.st.executeQuery(query);
             while (a.rs.next())
                 {
@@ -45,5 +46,4 @@ private void ShowStudRec(){
         {
             System.out.println(ex);
         }
-        System.out.print(stat.subjID);
     }
