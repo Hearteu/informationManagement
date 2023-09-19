@@ -1,0 +1,1 @@
+select studname,studid as x, (select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid and students.studid=x) as totalUnits from students;
