@@ -1,1 +1,2 @@
-select studname,studid as x, (select sum(subjunits) from students,subjects,enroll where students.studid = enroll.studid and enroll.subjid = subjects.subjid and students.studid=x) as totalUnits from students;
+String query = "select StudID, Studname, StudAdd, StudCourse, StudGender, StudYL, studid as x, (select sum(subjUnits) from students,Subjects,enroll where students.studid = enroll.studid and enroll.subjid = Subjects.subjid and students.studid=x) as totalUnits from students";
+            
