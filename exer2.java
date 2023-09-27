@@ -78,6 +78,29 @@ private void ShowEnrolledSubjRec(){
         }
     }
 
+private void ShowAssignedSubjRec(){
+        DefaultTableModel tblmodel = (DefaultTableModel) table_EteachSubj.getModel();
+        tblmodel.setRowCount(0);
+        MyDBConn a = new MyDBConn();
+        try {
+            String query = "select * from Subjects where subjID in(select subjID from assign where tid ="+tid+")"; //inlucde total units
+            a.rs = a.st.executeQuery(query);
+            while (a.rs.next())
+                {
+                    String id = a.rs.getString("subjID");
+                    String name = a.rs.getString("subjCode");
+                    String addr = a.rs.getString("subjDesc");
+                    String course = a.rs.getString("subjUnits");
+                    String gender = a.rs.getString("subjSched");
+                    String[] item = {id,name,addr, course,gender};
+                    tblmodel.addRow(item);
+                }
+        } catch(Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
+
 // FINAL SA SHOWSTUDENTS
 private void ShowStudRec(){
         DefaultTableModel tblmodel = (DefaultTableModel) table_students.getModel();
