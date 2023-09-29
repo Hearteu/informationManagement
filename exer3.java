@@ -8,9 +8,10 @@ private void createDB(String sem){
         String students = "create table students(studid int primary key, studname text, studadd text, studcourse text, studgender text, studyl text)";
         String subjects = "create table subjects(subjid int primary key, subjcode text, subjdesc text, subjunits text, subjsched text)";
         String enroll = "create table enroll(eid int, studid int, subjid int,  primary key(eid), foreign key(studid) references students(studid), foreign key(subjid) references subjects(subjid))";
-        //add assign subjid (add UNIQUE keyword) and tid are foreign keys
+        //add assign subjid (add UNIQUE keyword) references subjects(subjid) and tid references teachers(tid) are foreign keys
         // teachers table primary key tid
         String teachers = "create table students(studid int UNIQUE primary key, studname text, studadd text, studcourse text, studgender text, studyl text)";
+        //Grade table foreign key(gid) unique references enroll(eid), prelim text,midterm text,prefinal text
         try{
           MyDBConn a = new MyDBConn();    
           a.st.executeUpdate(createDB);
