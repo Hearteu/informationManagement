@@ -10,7 +10,7 @@ private void createDB(String sem){
         String enroll = "create table enroll(eid int, studid int, subjid int,  primary key(eid), foreign key(studid) references students(studid), foreign key(subjid) references subjects(subjid))";
         //add assign subjid (add UNIQUE keyword) and tid are foreign keys
         // teachers table primary key tid
-        // 
+        String teachers = "create table students(studid int UNIQUE primary key, studname text, studadd text, studcourse text, studgender text, studyl text)";
         try{
           MyDBConn a = new MyDBConn();    
           a.st.executeUpdate(createDB);
