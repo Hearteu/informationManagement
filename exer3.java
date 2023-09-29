@@ -7,7 +7,7 @@ private void createDB(String sem){
         String useDB = "use 1stSemSY2023_2024"; // use dbname
         String students = "create table students(studid int primary key, studname text, studadd text, studcourse text, studgender text, studyl text)";
         String subjects = "create table subjects(subjid int primary key, subjcode text, subjdesc text, subjunits text, subjsched text)";
-        String enroll = "create table enroll(eid int primary key, studid int foreign key(studid) references students(studid), subjid int foreign key(subjid) references subjects(subjid))";
+        String enroll = "create table enroll(eid int, studid int, subjid int,  primary key(eid), foreign key(studid) references students(studid), foreign key(subjid) references subjects(subjid))";
         
         try{
           MyDBConn a = new MyDBConn();    
