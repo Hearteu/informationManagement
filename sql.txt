@@ -1,0 +1,1 @@
+grant all privileges on *.* to 'root'@'10.4.40.174' identified by 'root';
