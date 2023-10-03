@@ -44,7 +44,7 @@ private void createDB(String sem){
         String subjects = "create table subjects(subjid int primary key, subjcode text, subjdesc text, subjunits text, subjsched text)";
         String enroll = "create table enroll(eid int, studid int, subjid int,  primary key(eid), foreign key(studid) references students(studid), foreign key(subjid) references subjects(subjid))";
         String teachers = "create table teachers(teacherid int unique, teachername text, department text, teacheradd text, teachercontact text, teacherstatus text, primary key(teacherid))";
-        String assign = "create table assign(tid int, subjid int unique, foreign key(tid) references teachers(teacherid))";
+        String assign = "create table assign(tid int, subjid int unique, foreign key(tid) references teachers(teacherid), foreign key(subjid) references subjects(subjid))";
         String grades = "create table grades(gid int unique, prelim text, midterm text, prefinal text, foreign key(gid) references enroll(eid))";
         try{
           MyDBConn a = new MyDBConn();    
