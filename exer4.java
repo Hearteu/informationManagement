@@ -1,9 +1,11 @@
 // LOGIN
-        MyDBConn db = new MyDBConn();
-        db.username = txt_username.getText();
-        db.password = txt_password.getText();
-        cbox_sy.removeAllItems();
-        ShowDB();
+        // LOGINACTIONPERFORMED
+                MyDBConn db = new MyDBConn();
+                db.username = txt_username.getText();
+                db.password = txt_password.getText();
+                cbox_sy.removeAllItems();
+                ShowDB();
+        ///
     private void ShowDB(){
         MyDBConn a = new MyDBConn();
         try {
@@ -22,6 +24,7 @@
             System.out.println(ex);
         }
     }
+
 // MyDBConn Update
 public class MyDBConn {
     public Connection con;
