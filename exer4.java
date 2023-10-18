@@ -30,16 +30,22 @@ public class MyDBConn {
     public Connection con;
     public Statement st;
     public ResultSet rs;
-    
     String db, username, password;
-    
-    
     public MyDBConn(){
         username = "root";
         password = "root";
         
-            db="information_schema";
-        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://10.4.40.70:3306/information_schema?zeroDateTimeBehavior=convertToNull",username,password); 
+            st = con.createStatement();  
+            System.out.println("Connected");
+        }catch (Exception ex) {
+          System.out.print(ex);
+        }
+    }
+    
+    public MyDBConn(String db, String username, String password){     
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://10.4.40.70:3306/" + db + "?zeroDateTimeBehavior=convertToNull",username,password); 
