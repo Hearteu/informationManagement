@@ -58,5 +58,5 @@ public class MyDBConn {
 }
 
 //students 
-String createuser = "create user 'username'@'19.4.40.174' identified by 'passowrd'";
-String grant = "grant select on *.* to 'user'@localhost identified by 'password'";
+String createuser = "create user 'username'@'10.4.40.174' identified by 'passowrd'";
+String grant = "grant select on *.* to 'user'@'10.4.40.174'";
