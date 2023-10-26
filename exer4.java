@@ -1,9 +1,9 @@
 // LOGIN
+MyDBConn a;
         // LOGINACTIONPERFORMED
-                MyDBConn db = new MyDBConn();
                 db.username = txt_username.getText();
                 db.password = txt_password.getText();
-                cbox_sy.removeAllItems();
+                
                 ShowDB();
         ///
     private void ShowDB(){
@@ -13,7 +13,7 @@
             while (a.rs.next())
                 {
                     String db = a.rs.getString("Database");
-                    
+                    cbox_sy.removeAllItems();
                     if(!db.equals("information_schema")){
                         cbox_sy.addItem(db);
                     }
@@ -23,6 +23,10 @@
             System.out.println(ex);
         }
     }
+//SUBMIT
+if (a.st == null){
+        
+}
 
 // MyDBConn Update
 public class MyDBConn {
@@ -60,26 +64,24 @@ String user = "T" + txt_teacherName.getText();
 String createuser = "create user '"+user+"'@'10.4.40.174' identified by '"+txt_studName.getText()+txt_studID.getText()+"'";
 String grant = "grant select on "+currentdb+".* to '"+txt_teacherName.getText()+"'@'10.4.40.174'";
 //students 
+String user = "S" + txt_teacherName.getText();
 String createuser = "create user '"+txt_studName.getText()+"'@'10.4.40.174' identified by '"+txt_studName.getText()+"s"+txt_studID.getText()+"'";
 String grant = "grant select on "+db+".* to '"+txt_studName.getText()+"'@'10.4.40.174'";
 
 //aljdhaskjd
 
    private void btn_saveStudentsActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        String password = txt_studName.getText()+"s"+txt_studID.getText();
-        String createuser = "create user '"+txt_studName.getText()+"'@'10.4.40.174' identified by '"+txt_studName.getText()+"s"+txt_studID.getText()+"'";
-        String grant = "grant select on "+MyDBConn.db+".* to '"+txt_studName.getText()+"'@'10.4.40.174'";
-        System.out.println(grant);
-        String usedb = "use " + MyDBConn.db;
+        String password = txt_studName.getText()+txt_studID.getText();
+        String user = "S" + txt_studName.getText();
+           
         String saveDB = "insert into students values("+txt_studID.getText()+",'"+txt_studName.getText()+"','"+txt_studAdd.getText()+"','"+txt_studCourse.getText()+"','"+txt_studGender.getText()+"','"+txt_studYear.getText()+"')"; // insert total units
-  
+        String createuser = "create user '"+user+"'@'10.4.40.174' identified by '"+password+"'";
+        String grant = "grant select on "+currentdb+".* to '"+txt_studName.getText()+"'@'10.4.40.174'";
+        
         try{
-          MyDBConn a = new MyDBConn(MyDBConn.db, txt_studName.getText(), password);    
-          
+          a.st.executeUpdate(saveDB);
           a.st.executeUpdate(createuser);
           a.st.executeUpdate(grant);
-          a.st.executeUpdate(usedb);
-          a.st.executeUpdate(saveDB);
         }catch(Exception ex){
             System.out.print("Unable to Save!!" + ex);
         }
