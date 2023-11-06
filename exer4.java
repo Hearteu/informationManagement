@@ -154,24 +154,7 @@ MyDBConn a;
         }
         ShowStudRec();
 
-//aljdhaskjd
-
-   private void btn_saveStudentsActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        String password = txt_studName.getText()+txt_studID.getText();
-        String user = "S" + txt_studName.getText();
-           
-        String saveDB = "insert into students values("+txt_studID.getText()+",'"+txt_studName.getText()+"','"+txt_studAdd.getText()+"','"+txt_studCourse.getText()+"','"+txt_studGender.getText()+"','"+txt_studYear.getText()+"')"; // insert total units
-        String createuser = "create user '"+user+"'@'10.4.40.174' identified by '"+password+"'";
-        String grant = "grant select on "+currentdb+".* to '"+txt_studName.getText()+"'@'10.4.40.174'";
-        
-        try{
-          a.st.executeUpdate(saveDB);
-          a.st.executeUpdate(createuser);
-          a.st.executeUpdate(grant);
-        }catch(Exception ex){
-            System.out.print("Unable to Save!!" + ex);
-        }
-        ShowStudRec();
+                    
 //checkuser
  public void checkuser(){
         try {
