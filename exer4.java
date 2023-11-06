@@ -1,20 +1,49 @@
-// LOGIN
-MyDBConn a;
-        // LOGINACTIONPERFORMED
-                db.username = txt_username.getText();
-                db.password = txt_password.getText();
-                
+// LOGIN form
+   MyDBConn a;
+   String login;
+   public static String user,pass;
+        // loginactionperformed
+        pass = new String(txt_password.getPassword());
+        a = new MyDBConn("information_schema", txt_username.getText(), pass);
+                                                
+        if(a.st == null){
+            messagebox("Access Denied!!", "Error");
+        }else{
+            login = "logged";
+            if (!txt_username.getText().equals("root")){
+                ShowDBstud();
+            }else{
                 ShowDB();
-        ///
+            }
+            
+        }
+        // comboboxactionperformed
+         String x = String.valueOf(cbox_sy.getSelectedItem());
+         MyDBConn.db = x;
+
+        // button submit actionperformed
+        pass = new String(txt_password.getPassword());
+        user = txt_username.getText();
+        students b = new students(MyDBConn.db, txt_username.getText(), pass);
+        teachers c = new teachers(MyDBConn.db, txt_username.getText(), pass);
+        if (login.equals("logged")){
+            b.show();
+        }
+//messagebox
+private void messagebox(String message, String titlebar){
+        JOptionPane.showMessageDialog(null,message,titlebar,JOptionPane.INFORMATION_MESSAGE);
+    }
+// showdb
     private void ShowDB(){
+        cbox_sy.removeAllItems();
         try {
             String query = "Show databases";
             a.rs = a.st.executeQuery(query);
             while (a.rs.next())
                 {
                     String db = a.rs.getString("Database");
-                    cbox_sy.removeAllItems();
-                    if(!db.equals("information_schema")){
+                    
+                    if(!db.equals("information_schema") && !db.equals("performance_schema") && !db.equals("mysql") && !db.equals("progexer1")){
                         cbox_sy.addItem(db);
                     }
                 }
@@ -23,30 +52,37 @@ MyDBConn a;
             System.out.println(ex);
         }
     }
-//SUBMIT
-if (a.st == null){
-        
-}
+//  
+private void ShowDBstud(){
+        cbox_sy.removeAllItems();
+        try {
+            String query = "Show databases";
+            a.rs = a.st.executeQuery(query);
+            while (a.rs.next())
+                {
+                    String db = a.rs.getString("Database");
+                    
+                     if(!db.equals("information_schema") && !db.equals("performance_schema") && !db.equals("mysql") && !db.equals("progexer1")){
+                        cbox_sy.addItem(db);
+                    }
+                    
+                }
+        } catch(Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
 
-// MyDBConn Update
+
+
+// MyDBConn final
 public class MyDBConn {
     public Connection con;
     public Statement st;
     public ResultSet rs;
-    String db, username, password;
-    public MyDBConn(){
-        username = "root";
-        password = "root";
-        
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://10.4.40.70:3306/information_schema?zeroDateTimeBehavior=convertToNull",username,password); 
-            st = con.createStatement();  
-            System.out.println("Connected");
-        }catch (Exception ex) {
-          System.out.print(ex);
-        }
-    }
+    public static String db;
+    String username, password;
+    
     
     public MyDBConn(String db, String username, String password){     
         try{
@@ -59,6 +95,7 @@ public class MyDBConn {
         }
     }
 }
+
 //teachers
 String user = "T" + txt_teacherName.getText();
 String createuser = "create user '"+user+"'@'10.4.40.174' identified by '"+txt_teacherName.getText()+txt_teacherID.getText()+"'";
