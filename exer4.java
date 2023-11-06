@@ -74,7 +74,6 @@ private void ShowDBstud(){
     }
 
 
-
 // MyDBConn final
 public class MyDBConn {
     public Connection con;
@@ -118,9 +117,42 @@ try{
         ShowTeachRec();
     }                       
 //students 
-String user = "S" + txt_teacherName.getText();
-String createuser = "create user '"+txt_studName.getText()+"'@'10.4.40.174' identified by '"+txt_studName.getText()+"s"+txt_studID.getText()+"'";
-String grant = "grant select on "+db+".* to '"+txt_studName.getText()+"'@'10.4.40.174'";
+public String studid, subjID, currentdb,aa;
+MyDBConn a;
+    /**
+     * Creates new form students
+     */
+    public students() {
+        initComponents();
+    }
+    public students(String db, String un, String pass) {
+        currentdb = db;
+        initComponents();
+        a = new MyDBConn(db,un,pass);
+        
+    }
+// save button
+      String saveDB = "insert into students values("+txt_studID.getText()+",'"+txt_studName.getText()+"','"+txt_studAdd.getText()+"','"+txt_studCourse.getText()+"','"+txt_studGender.getText()+"','"+txt_studYear.getText()+"')";
+        String createuser = "create user 'S"+txt_studName.getText()+"'@'10.4.40.174' identified by '"+txt_studName.getText()+txt_studID.getText()+"'";
+        String grant = "grant select on "+currentdb+".* to 'S"+txt_studName.getText()+"'@'10.4.40.174'";
+        
+        System.out.println(grant);
+        
+        try{
+          a.st.executeUpdate(saveDB);
+          System.out.println("SAVED");
+          checkuser();
+          System.out.println("checked");
+          if (!aa.equals("exists")){
+              a.st.executeUpdate(createuser);
+              System.out.println("CREATED USER");
+          }
+          a.st.executeUpdate(grant);
+          System.out.println("Granted to: " + currentdb);
+        }catch(Exception ex){
+            System.out.print("Unable to Save!!" + ex);
+        }
+        ShowStudRec();
 
 //aljdhaskjd
 
